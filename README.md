@@ -8,4 +8,4 @@ the tempatures to Farenheit, and vice versus.
 ### Note:
 Not all weather conditoins have an icon to it. 
 
-[### Click Here to see it in action.](https://codepen.io/minbarrs/full/OvrdLB/)
+### [Click Here to see it in action.](https://codepen.io/minbarrs/full/OvrdLB/)
