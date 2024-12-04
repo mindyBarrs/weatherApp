@@ -1,0 +1,25 @@
+{
+	"name": "weatherappserver",
+	"version": "1.0.0",
+	"main": "index.js",
+	"scripts": {
+		"dev": "nodemon src/index.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "Mindy Barrs",
+	"license": "ISC",
+	"description": "Server for the React and Vue weather apps to use weaterAPI",
+	"dependencies": {
+		"axios": "^1.7.9",
+		"body-parser": "^1.20.3",
+		"cors": "^2.8.5",
+		"express": "^4.21.1",
+		"nodemon": "^3.1.7"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.16.0",
+		"eslint": "^9.16.0",
+		"globals": "^15.13.0"
+	}
+}

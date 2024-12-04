@@ -8,7 +8,9 @@
 				"alias": {
 					"react-router-dom": "react-router-dom/umd/react-router-dom.min.js",
 					"redux": "redux/dist/redux.min.js",
-					"react-redux": "react-redux/dist/react-redux.min.js"
+					"react-redux": "react-redux/dist/react-redux.min.js",
+					"test": "./test",
+					"underscore": "lodash"
 				}
 			}
 		]

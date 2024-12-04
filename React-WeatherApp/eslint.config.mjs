@@ -8,6 +8,7 @@ import pluginImport from "eslint-plugin-import";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
+	{ parser: "babel-eslint" },
 	{ extends: ["plugin:react/recommended", "airbnb", "prettier"] },
 	{ files: ["**/*.{js,mjs,cjs,jsx}"] },
 	{
