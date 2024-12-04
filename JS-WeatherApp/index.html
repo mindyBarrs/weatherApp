@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Local Weather App</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css"
+    />
+
+    <link
+      rel="stylesheet prefetch"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css"
+    />
+    <link
+      rel="stylesheet prefetch"
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.css"
+    />
+
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+
+  <body>
+    <body class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 card mt-3">
+              <div class="card-body">
+                <h3 class="text-center text-bold">Weather App</h3>
+
+                <div class="card-body text-center">
+                  <h4 class="city">Your location:</h4>
+                  <hr class="divider" />
+
+                  <div class="text-center pb-3">
+                    <p class="text-temp">today's tempature:</p>
+
+                    <p>
+                      <span class="temp"></span>
+                      <span id="tempUnit" class="tempunit"></span>
+                    </p>
+                  </div>
+
+                  <div class="temps row">
+                    <div
+                      class="col-lg-6 col-md-6 col-sm-6 col-xs-12 right-border"
+                    >
+                      <p class="text-temp">Min. Tempature:</p>
+                      <p>
+                        <span class="minTemp"></span>
+                        <span id="minUnit" class="tempunit"></span>
+                      </p>
+                    </div>
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                      <p class="text-temp">Max Tempature:</p>
+
+                      <span class="maxTemp"></span>
+                      <span id="maxUnit" class="tempunit"></span>
+                    </div>
+                  </div>
+                  <hr class="divider" />
+
+                  <div class="weather-info">
+                    <div class="weather"></div>
+                    <i class="wi"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script src="js/index.js"></script>
+  </body>
+</html>

@@ -6,8 +6,9 @@ var currentMinTemp;
 var currentMaxTemp;
 var tempUnit = "C";
 
-$(document).ready(function() {
-	if (navigator.geolocation) {	navigator.geolocation.getCurrentPosition(function(position) {
+$(document).ready(function () {
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(function (position) {
 			var lat = "lat=" + position.coords.latitude;
 			var long = "&lon=" + position.coords.longitude;
 
@@ -19,14 +20,16 @@ $(document).ready(function() {
 		);
 	}
 
-	$("#tempUnit, #minUnit, #maxUnit").click(function() {
+	$("#tempUnit, #minUnit, #maxUnit").click(function () {
 		var currentTempUnit = $("#tempUnit").text();
 		var currentTemp = $(".temp").text();
 		var currentMax = $(".maxTemp").text();
 		var currentMin = $(".minTemp").text();
 		var newTempUnit = currentTempUnit == "C" ? "F" : "C";
+
 		$(".tempunit").text(newTempUnit);
-if (newTempUnit == "F") {
+
+		if (newTempUnit == "F") {
 			var fahTemp = convertFahrenheit(currentTemp);
 			var fahMaxTemp = convertFahrenheit(currentMax);
 			var fahMinTemp = convertFahrenheit(currentMin);
@@ -46,7 +49,7 @@ function getWeather(lat, long) {
 
 	$.ajax({
 		url: jsonStr,
-		success: function(data) {
+		success: function (data) {
 			$(".city").html(data.name + ", " + data.sys.country);
 
 			currentTempCelsius = Math.round(data.main.temp * 10) / 10;
@@ -59,7 +62,7 @@ function getWeather(lat, long) {
 			$(".tempunit").text(tempUnit);
 			$(".weather").html(data.weather[0].main);
 			weatherIcons(data.weather[0].main);
-		}
+		},
 	});
 }
 
@@ -88,13 +91,13 @@ function weatherIcons(weather) {
 		case "clear":
 			$("i").addClass("wi-cloud");
 			break;
-			case"haze":
+		case "haze":
 			$("i").addClass("wi-fog");
 			break;
-			case"fog":
+		case "fog":
 			$("i").addClass("wi-fog");
 			break;
-			case"mist":
+		case "mist":
 			$("i").addClass("wi-sprinkle");
 			$(".weather").html("Possible Rain");
 			break;
@@ -102,7 +105,7 @@ function weatherIcons(weather) {
 }
 
 function convertFahrenheit(temp) {
-	var fahTemp = Math.round(parseInt(temp) * 9 / 5 + 32);
-	
+	var fahTemp = Math.round((parseInt(temp) * 9) / 5 + 32);
+
 	return fahTemp;
 }

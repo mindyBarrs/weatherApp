@@ -1,0 +1,7 @@
+// Allows for absolute imports
+{
+	"compilerOptions": {
+		"baseUrl": "src"
+	},
+	"include": ["src"]
+}

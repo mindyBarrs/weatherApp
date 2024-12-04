@@ -1,11 +1,11 @@
-# Weather Javascript App
+# Weather App
 
-It is an application that loads on a webpage and then it will ask permission to get your location.
-Once it has the location info it will use an API to get the local wather information and 
-display the tempature and the weather condition. Also if you click on the Celsius icon it will change
-the tempatures to Farenheit, and vice versus.
+This weather application is created in three different technologies. The application will allow the user either use thier current location or enter in a location they would like to know the currect weather. The applicaiton will provide the latlong to [weaterAPI](https://www.weatherapi.com/docs/) which will then return the location's currect weather information.
 
-### Note:
-Not all weather conditoins have an icon to it. 
+The weather application has a number of interation:
 
-### [Click Here to see it in action.](https://codepen.io/minbarrs/full/OvrdLB/)
+- JS-WeatherApp: created with vanilla javascript
+- React-WeatherApp: created with react and used a node server to retrieve data from the api
+- Vue-WeatherApp: created using vue and used the same node server as the react app to retrieve data from the api.
+
+A node server was created to be used by the React and Vue applications to retrieve the weather data from [weaterAPI](https://www.weatherapi.com/docs/).
