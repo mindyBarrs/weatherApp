@@ -1,7 +1,7 @@
-// eslint-disable-next-line no-unused-vars
+require("dotenv").config();
+
 const axios = require("axios");
 const express = require("express");
-const cors = require("cors");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -9,10 +9,36 @@ const port = 3000;
 
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
-app.use(cors);
 
-app.get("/", (req, res) => {
-	res.send("Hello from Express!");
+app.get("/status", (req, res) => {
+	const status = {
+		Status: "running",
+	};
+
+	res.send(status);
+});
+
+app.get("/weatherAPI", async (req, res) => {
+	const body = req.body;
+
+	await axios
+		.get(
+			`http://api.weatherapi.com/v1/current.json?key=${
+				process.env.WEATHER_API_KEY
+			}&q=${body?.postalCode ? body?.latLog : body?.city}&aqi=no`
+		)
+		.then((response) => {
+			res.send(response.data);
+		})
+		.catch((err) => {
+			const status = {
+				Status: err.status,
+				ErrorCode: err.code,
+				message: "Error retrieving weather information",
+			};
+
+			res.send(status);
+		});
 });
 
 app.listen(port, () => {
