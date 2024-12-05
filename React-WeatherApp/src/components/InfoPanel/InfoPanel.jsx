@@ -1,5 +1,7 @@
 import React from "react";
 
-export const Info = () => {
+const InfoPanel = () => {
 	return <div>Retrieved Weather Info</div>;
 };
+
+export default InfoPanel;

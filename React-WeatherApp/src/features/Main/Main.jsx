@@ -1,9 +1,9 @@
 import React from "react";
 
-import Info from "components/Info";
+import Info from "components/InfoPanel";
 import Search from "components/Search";
 
-export const Main = () => {
+const Main = () => {
 	return (
 		<>
 			<Search />
@@ -11,3 +11,5 @@ export const Main = () => {
 		</>
 	);
 };
+
+export default Main;

@@ -6,9 +6,8 @@
 			{
 				"root": ["./src"],
 				"alias": {
-					"react-router-dom": "react-router-dom/umd/react-router-dom.min.js",
 					"redux": "redux/dist/redux.min.js",
-					"react-redux": "react-redux/dist/react-redux.min.js",
+					"react-redux": "./node_modules/react-redux/dist/react-redux.legacy-esm.js",
 					"test": "./test",
 					"underscore": "lodash"
 				}

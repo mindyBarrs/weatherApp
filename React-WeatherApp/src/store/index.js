@@ -2,10 +2,10 @@ import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query";
 
 // REDUCER
-import waetherReducer from "reducer/waetherReducer";
+import waetherReducer from "./reducer/waetherReducer";
 
 // SERVICES
-import weartherApi from "services/weartherAPI";
+import weartherApi from "./services/weatherAPI";
 
 const store = configureStore({
 	reducer: {

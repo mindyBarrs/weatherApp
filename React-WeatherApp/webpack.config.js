@@ -34,7 +34,15 @@ export default {
 			template: "./public/index.html",
 		}),
 	],
+	optimization: {
+		removeAvailableModules: false,
+		removeEmptyChunks: false,
+		splitChunks: false,
+	},
 	devServer: {
+		port: 8080,
+		hot: true,
+		historyApiFallback: true,
 		static: {
 			directory: path.join(__dirname, "dist"),
 		},

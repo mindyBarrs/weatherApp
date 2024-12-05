@@ -19,6 +19,6 @@ export const weatherReducer = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setWeather } = counterSlice.actions;
+export const { setWeather } = weatherReducer.actions;
 
-export default counterSlice.reducer;
+export default weatherReducer.reducer;
