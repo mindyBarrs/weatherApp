@@ -1,18 +1,19 @@
-var api = "https://fcc-weather-api.glitch.me/api/current?";
-var lat = "";
-var long = "";
-var currentTempCelsius;
-var currentMinTemp;
-var currentMaxTemp;
-var tempUnit = "C";
+const api = "http://api.weatherapi.com/v1/forecast.json?key=";
+const apiKey = <APIKEY GOES HERE>;
+const apiAppend = "&days=1&aqi=no&alerts=no";
+const tempUnit = "C";
+
+let latLong = "";
+let currentTempCelsius;
+let currentMinTemp;
+let currentMaxTemp;
 
 $(document).ready(function () {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(function (position) {
-			var lat = "lat=" + position.coords.latitude;
-			var long = "&lon=" + position.coords.longitude;
+			latLong = position.coords.latitude + "," + position.coords.longitude;
 
-			getWeather(lat, long);
+			getWeather(latLong);
 		});
 	} else {
 		$(".card-body").html(
@@ -21,11 +22,11 @@ $(document).ready(function () {
 	}
 
 	$("#tempUnit, #minUnit, #maxUnit").click(function () {
-		var currentTempUnit = $("#tempUnit").text();
-		var currentTemp = $(".temp").text();
-		var currentMax = $(".maxTemp").text();
-		var currentMin = $(".minTemp").text();
-		var newTempUnit = currentTempUnit == "C" ? "F" : "C";
+		let currentTempUnit = $("#tempUnit").text();
+		let currentTemp = $(".temp").text();
+		let currentMax = $(".maxTemp").text();
+		let currentMin = $(".minTemp").text();
+		let newTempUnit = currentTempUnit == "C" ? "F" : "C";
 
 		$(".tempunit").text(newTempUnit);
 
@@ -33,6 +34,7 @@ $(document).ready(function () {
 			var fahTemp = convertFahrenheit(currentTemp);
 			var fahMaxTemp = convertFahrenheit(currentMax);
 			var fahMinTemp = convertFahrenheit(currentMin);
+
 			$(".temp").text(fahTemp + " " + String.fromCharCode(176));
 			$(".minTemp").text(fahMinTemp + " " + String.fromCharCode(176));
 			$(".maxTemp").text(fahMaxTemp + " " + String.fromCharCode(176));
@@ -44,32 +46,34 @@ $(document).ready(function () {
 	});
 });
 
-function getWeather(lat, long) {
-	var jsonStr = api + lat + long;
+function getWeather(latLong) {
+	var jsonStr = api + apiKey + "&q=" + latLong + apiAppend;
 
 	$.ajax({
 		url: jsonStr,
 		success: function (data) {
-			$(".city").html(data.name + ", " + data.sys.country);
+			currentTempCelsius = Math.round(data?.current?.temp_c * 10) / 10;
+			currentMinTemp =
+				Math.round(data?.forecast?.forecastday[0]?.day?.mintemp_c * 10) / 10;
+			currentMaxTemp =
+				Math.round(data?.forecast?.forecastday[0]?.day?.maxtemp_c * 10) / 10;
 
-			currentTempCelsius = Math.round(data.main.temp * 10) / 10;
-			currentMinTemp = Math.round(data.main.temp_min * 10) / 10;
-			currentMaxTemp = Math.round(data.main.temp_max * 10) / 10;
-
+			$(".city").html(data?.location?.name + ", " + data?.location?.country);
 			$(".temp").text(currentTempCelsius + " " + String.fromCharCode(176));
 			$(".minTemp").html(currentMinTemp + " " + String.fromCharCode(176));
 			$(".maxTemp").html(currentMaxTemp + " " + String.fromCharCode(176));
 			$(".tempunit").text(tempUnit);
-			$(".weather").html(data.weather[0].main);
-			weatherIcons(data.weather[0].main);
+			$(".weather").html(data?.current?.condition?.text);
+
+			weatherIcons(data?.current?.condition?.text);
 		},
 	});
 }
 
 function weatherIcons(weather) {
-	var weather = weather.toLowerCase();
+	let weatherType = weather.toLowerCase();
 
-	switch (weather) {
+	switch (weatherType) {
 		case "clouds":
 			$("i").addClass("wi-cloudy");
 			break;
@@ -79,7 +83,7 @@ function weatherIcons(weather) {
 		case "rain":
 			$("i").addClass("wi-rain");
 			break;
-		case "sun":
+		case "sunny":
 			$("i").addClass("wi-day-sunny");
 			break;
 		case "wind":
