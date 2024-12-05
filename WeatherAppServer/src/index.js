@@ -23,9 +23,11 @@ app.get("/weatherAPI", async (req, res) => {
 
 	await axios
 		.get(
-			`http://api.weatherapi.com/v1/current.json?key=${
+			`http://api.weatherapi.com/v1/forecast.json?key=${
 				process.env.WEATHER_API_KEY
-			}&q=${body?.postalCode ? body?.latLog : body?.city}&aqi=no`
+			}&q=${
+				body?.postalCode || body?.latLog || body?.city
+			}&days=1&aqi=no&alerts=no`
 		)
 		.then((response) => {
 			res.send(response.data);

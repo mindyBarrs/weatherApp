@@ -1,5 +1,5 @@
 const api = "http://api.weatherapi.com/v1/forecast.json?key=";
-const apiKey = <APIKEY GOES HERE>;
+const apiKey = "<APIKEY GOES HERE>";
 const apiAppend = "&days=1&aqi=no&alerts=no";
 const tempUnit = "C";
 
