@@ -18,7 +18,7 @@ app.get("/status", (req, res) => {
 	res.send(status);
 });
 
-app.get("/weatherAPI", async (req, res) => {
+app.get("/weatherInfo", async (req, res) => {
 	const body = req.body;
 
 	await axios

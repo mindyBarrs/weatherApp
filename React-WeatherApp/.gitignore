@@ -13,6 +13,7 @@ package-lock.json
 
 #Misc
 npm-debug.log*
+.DS_Store
 
 # Editor 
 .vscode/*
