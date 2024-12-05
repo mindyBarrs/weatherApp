@@ -23,6 +23,8 @@ at the beginning of every file vs. Create-React-App you don't need it as long as
 - [EsLint](https://eslint.org/docs/latest/use/getting-started)
 - [Prettier](https://prettier.io/docs/en/)
 - [Husky](https://typicode.github.io/husky/)
+- [Redux](https://redux.js.org/)
+- [Scss](https://sass-lang.com/documentation/syntax/)
 
 ### Importing
 

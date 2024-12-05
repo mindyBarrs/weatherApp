@@ -1,0 +1,8 @@
+@use "./../../utils/theme/base.scss";
+@use "./../../utils/theme/colors.scss";
+
+h1 {
+	font-family: base.$main-font-family;
+	font-size: 50px;
+	color: colors.$dark-blue;
+}

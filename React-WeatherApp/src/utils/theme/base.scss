@@ -1,0 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Erica+One);
+
+@import url(https://fonts.googleapis.com/css?family=Ribeye);
+
+$main-font-family: "Erica One", cursive;
+$sub-font-family: "Ribeye", cursive;
+
+#root {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
