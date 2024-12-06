@@ -24,6 +24,7 @@ at the beginning of every file vs. Create-React-App you don't need it as long as
 - [Prettier](https://prettier.io/docs/en/)
 - [Husky](https://typicode.github.io/husky/)
 - [Redux](https://redux.js.org/)
+- [i18next](https://www.i18next.com/overview/getting-started)
 - [Scss](https://sass-lang.com/documentation/syntax/)
 
 ### Importing
