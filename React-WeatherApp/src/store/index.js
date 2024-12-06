@@ -9,6 +9,7 @@ import weartherApi from "./services/weatherAPI";
 
 const store = configureStore({
 	reducer: {
+		weather: waetherReducer,
 		[weartherApi.reducerPath]: weartherApi.reducer,
 	},
 	middleware: (getDefaultMiddleware) =>

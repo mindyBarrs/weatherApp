@@ -1,3 +1,12 @@
 {
-	"app_header": "Currect Weather"
+	"app_header": "Currect Weather",
+	"max_temp": "Max. Tempature",
+	"min_temp": "Min. Tempature",
+	"current_temp": "Current Tempature",
+	"weather_condition": "Current weather condition",
+	"search_btn": "Search",
+	"search_input": {
+		"id": "locationSearch",
+		"placeholder": "Enter city, postal code or lat,long"
+	}
 }
