@@ -1,6 +1,13 @@
 @use "./../../utils/theme/base.scss";
 @use "./../../utils/theme/colors.scss";
 
+label {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-weight: 700;
+	color: colors.$dark-blue;
+	font-size: 16px;
+}
+
 .inputWithBtn {
 	position: relative;
 	height: 100px;

@@ -29,18 +29,21 @@ const Search = () => {
 	};
 
 	return (
-		<div className="inputWithBtn">
-			<input
-				id={t("search_input.id")}
-				placeholder={t("search_input.placeholder")}
-				value={value}
-				onChange={(e) => setValue(e.target.value)}
-			/>
+		<>
+			<label htmlFor={t("search_input.id")}>{t("search_input.label")}</label>
 
-			<button onClick={() => onClickHandler()}>{t("search_btn")}</button>
+			<div className="inputWithBtn">
+				<input
+					id={t("search_input.id")}
+					placeholder={t("search_input.placeholder")}
+					value={value}
+					onChange={(e) => setValue(e.target.value)}
+				/>
 
+				<button onClick={() => onClickHandler()}>{t("search_btn")}</button>
+			</div>
 			{/* Add use my location button */}
-		</div>
+		</>
 	);
 };
 
