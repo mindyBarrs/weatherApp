@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 
+import useGeoLocation from "hooks/useGeoLocation";
+
 import { setWeather } from "store/reducer/waetherReducer";
 import { useLazyGetCurrentWeatherQuery } from "store/services/weatherAPI";
 
 import "./Search.scss";
-import useGeoLocation from "hooks/useGeoLocation";
 
 const Search = () => {
 	const dispatch = useDispatch();
