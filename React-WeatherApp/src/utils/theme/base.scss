@@ -1,3 +1,5 @@
+@use "./colors.scss";
+
 @import url(https://fonts.googleapis.com/css?family=Erica+One);
 @import url(https://fonts.googleapis.com/css?family=Ribeye);
 
@@ -10,4 +12,11 @@ $sub-font-family: "Ribeye", cursive;
 	align-items: center;
 	margin: auto;
 	width: 50%;
+	gap: 10px;
+
+	.error {
+		color: colors.$error;
+		align-self: flex-start;
+		text-indent: 75px;
+	}
 }

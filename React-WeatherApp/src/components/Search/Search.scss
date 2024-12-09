@@ -10,12 +10,10 @@ label {
 
 .inputWithBtn {
 	position: relative;
-	height: 100px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: 10px;
 
 	input {
 		width: 100%;
@@ -70,5 +68,5 @@ label {
 	flex-direction: column-reverse;
 	align-items: center;
 	justify-content: center;
-	margin-bottom: 15px;
+	margin-top: 35px;
 }
