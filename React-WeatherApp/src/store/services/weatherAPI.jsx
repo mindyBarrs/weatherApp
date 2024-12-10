@@ -3,7 +3,23 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { API_HOST, WEATHER_API } from "utils/constants/url.constants";
 
-// TODO: Create a return transformer
+const transformResponse = (res) => {
+	const weatherInfo = {
+		temp: {},
+		condition: {},
+		location: "",
+	};
+
+	weatherInfo.temp = {
+		current: res?.current.temp_c,
+		maxTemp: res?.forecast.forecastday[0].day.maxtemp_c,
+		minTemp: res?.forecast.forecastday[0].day.mintemp_c,
+	};
+	weatherInfo.condition = res?.current?.condition;
+	weatherInfo.location = `${res?.location?.name}, ${res?.location?.region}, ${res?.location?.country}`;
+
+	return weatherInfo;
+};
 
 // Define a service using a base URL and expected endpoints
 export const weatherApi = createApi({
@@ -12,12 +28,14 @@ export const weatherApi = createApi({
 	endpoints: (builder) => ({
 		getCurrentWeather: builder.query({
 			query: (locationData) => {
-				console.log(locationData);
 				return {
 					url: WEATHER_API,
 					method: "POST",
 					body: { locationData },
 				};
+			},
+			transformResponse: (response, meta, arg) => {
+				return transformResponse(response);
 			},
 		}),
 	}),

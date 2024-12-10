@@ -39,8 +39,6 @@ export const validateInput = (input) => {
 	const postalError = validatePostalOrZip(input);
 	if (!postalError) return true;
 
-	// Return the first error message if none are valid
-
 	store.dispatch(setError(cityError || latLongError || postalError));
 	return false;
 };

@@ -19,11 +19,12 @@ const Search = () => {
 	const [getCurrentWeatherQuery, { data, error }] =
 		useLazyGetCurrentWeatherQuery();
 
-	const [value, setValue] = useState("");
-
 	const { location, getMyLocation } = useGeoLocation();
 
 	const errorMessage = useSelector((state) => state.error);
+	const weather = useSelector((state) => state.weather);
+
+	const [value, setValue] = useState(weather?.location || "");
 
 	useEffect(() => {
 		if (data) {
@@ -39,6 +40,12 @@ const Search = () => {
 			getCurrentWeatherQuery(`${latitude}, ${longitude}`);
 		}
 	}, [location]);
+
+	useEffect(() => {
+		if (weather) {
+			setValue(weather?.location);
+		}
+	}, [weather]);
 
 	const onClickHandler = () => {
 		if (value) {

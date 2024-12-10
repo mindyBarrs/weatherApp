@@ -8,15 +8,17 @@ import Search from "components/Search";
 import "./Main.scss";
 
 const Main = () => {
+	const { t } = useTranslation();
+
 	const weather = useSelector((state) => state.weather);
 
-	const { t } = useTranslation();
 	return (
 		<>
 			<h1>{t("app_header")}</h1>
+
 			<Search />
 
-			{weather.temp && <Info />}
+			{Object.keys(weather.weatherInfo).length > 0 && <Info />}
 		</>
 	);
 };
