@@ -12,9 +12,9 @@ const container = document.getElementById("root");
 const root = createRoot(container); // createRoot(container!) if you use TypeScript
 
 root.render(
-	<I18nextProvider i18n={i18n}>
-		<Provider store={store}>
+	<Provider store={store}>
+		<I18nextProvider i18n={i18n}>
 			<App />
-		</Provider>
-	</I18nextProvider>
+		</I18nextProvider>
+	</Provider>
 );
