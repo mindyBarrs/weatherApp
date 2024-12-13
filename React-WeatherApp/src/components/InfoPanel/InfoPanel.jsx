@@ -22,7 +22,7 @@ const InfoPanel = () => {
 			<div>
 				<span>{t("current_temp")}</span>
 
-				{weather.weatherInfo.temp.current && (
+				{weather?.weatherInfo?.temp?.current && (
 					<button className="temp" onClick={() => onClickHandler()}>
 						{weather.weatherInfo.temp.current} &deg;{weather.unit}
 					</button>
@@ -33,7 +33,7 @@ const InfoPanel = () => {
 				<div>
 					<span>{t("min_temp")}</span>
 
-					{weather.weatherInfo.temp.minTemp && (
+					{weather?.weatherInfo?.temp?.minTemp && (
 						<button className="temp" onClick={() => onClickHandler()}>
 							{weather.weatherInfo.temp.minTemp} &deg;{weather.unit}
 						</button>
@@ -45,7 +45,7 @@ const InfoPanel = () => {
 				<div>
 					<span>{t("max_temp")}</span>
 
-					{weather.weatherInfo.temp.maxTemp && (
+					{weather?.weatherInfo?.temp?.maxTemp && (
 						<button className="temp" onClick={() => onClickHandler()}>
 							{weather.weatherInfo.temp.maxTemp} &deg;{weather.unit}
 						</button>
@@ -54,10 +54,10 @@ const InfoPanel = () => {
 			</div>
 
 			<div>
-				<span>{weather.weatherInfo.condition.text}</span>
+				<span>{weather?.weatherInfo?.condition?.text}</span>
 				<img
-					src={weather.weatherInfo.condition.icon}
-					alt={weather.weatherInfo.condition.text}
+					src={weather?.weatherInfo?.condition?.icon}
+					alt={weather?.weatherInfo?.condition?.text}
 				/>
 			</div>
 		</div>
