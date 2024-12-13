@@ -7,7 +7,29 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import i18next from "utils/jest.setup";
 
+import weartherApi from "store/services/weatherAPI";
+
 import { rootReducer } from "store";
+
+/**
+ * Adds the `data-testid` prop if in 'development' or 'test' environment.
+ *
+ * @param {string} testId - The value to assign to the `data-testid` attribute.
+ * @returns {object} - An object containing `data-testid` prop, if in dev or test environment.
+ */
+export const testAttr = (testId) => {
+	// Check if the environment is 'development' or 'test'
+	const isDevOrTest =
+		process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test";
+
+	// If in dev or test environment, return the `data-testid` prop
+	if (isDevOrTest) {
+		return { "data-testid": testId };
+	}
+
+	// Otherwise, return an empty object
+	return {};
+};
 
 // A utility function to create a test Redux store
 const createTestStore = (preloadedState) => {

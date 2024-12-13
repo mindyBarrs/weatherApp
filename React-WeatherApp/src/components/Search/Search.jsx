@@ -10,6 +10,7 @@ import { useLazyGetCurrentWeatherQuery } from "store/services/weatherAPI";
 
 import "./Search.scss";
 import { validateInput } from "utils/validation.utils";
+import { testAttr } from "utils/test.utils";
 
 const Search = () => {
 	const dispatch = useDispatch();
@@ -72,17 +73,24 @@ const Search = () => {
 
 					<div className="inputWithBtn">
 						<input
+							{...testAttr(t("search_input.id"))}
 							id={t("search_input.id")}
 							placeholder={t("search_input.placeholder")}
 							value={value}
 							onChange={(e) => setValue(e.target.value)}
 						/>
 
-						<button onClick={() => onClickHandler()}>{t("search_btn")}</button>
+						<button
+							{...testAttr("search-btn")}
+							onClick={() => onClickHandler()}
+						>
+							{t("search_btn")}
+						</button>
 					</div>
 				</div>
 
 				<button
+					{...testAttr("myLocation-btn")}
 					className="myLocationBtn"
 					aria-label="use my location"
 					onClick={() => {
@@ -93,7 +101,11 @@ const Search = () => {
 				</button>
 			</div>
 
-			{errorMessage && <span className="error">{t(errorMessage.error)}</span>}
+			{errorMessage && (
+				<span {...testAttr("error-txt")} className="error">
+					{t(errorMessage.error)}
+				</span>
+			)}
 		</>
 	);
 };
