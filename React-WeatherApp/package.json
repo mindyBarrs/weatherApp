@@ -36,7 +36,6 @@
 		"@eslint/js": "^9.16.0",
 		"@testing-library/jest-dom": "^4.2.0",
 		"@testing-library/react": "^16.0.1",
-		"@testing-library/user-event": "^14.5.2",
 		"babel-loader": "^9.2.1",
 		"babel-plugin-module-resolver": "^5.0.2",
 		"css-loader": "^7.1.2",

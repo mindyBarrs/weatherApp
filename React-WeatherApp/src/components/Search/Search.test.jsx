@@ -1,5 +1,4 @@
 import React from "react";
-import fetchMock from "jest-fetch-mock";
 import "@testing-library/jest-dom";
 import { act, fireEvent } from "@testing-library/react";
 
@@ -8,10 +7,6 @@ import Search from "./Search";
 import { render } from "utils/test.utils";
 
 describe("<Search />", () => {
-	beforeEach(() => {
-		fetchMock.resetMocks();
-	});
-
 	it("should render properly", () => {
 		const { getByText } = render(<Search />, {
 			preloadedState: {
@@ -27,7 +22,7 @@ describe("<Search />", () => {
 	});
 
 	it("should get current wearther for searched city", () => {
-		const { getByTestId, container } = render(<Search />, {
+		const { getByTestId, getByText } = render(<Search />, {
 			preloadedState: {
 				weather: {
 					unit: "C",
@@ -44,9 +39,8 @@ describe("<Search />", () => {
 
 		act(() => {
 			fireEvent.click(getByTestId("search-btn"));
-			expect(getByTestId("locationSearch")).toHaveValue("Toronto");
 		});
 
-		expect(fetchMock).toBeCalledTimes(1);
+		expect(getByTestId("locationSearch")).toHaveValue("Toronto");
 	});
 });

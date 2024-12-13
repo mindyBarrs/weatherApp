@@ -24,7 +24,7 @@ const InfoPanel = () => {
 
 				{weather?.weatherInfo?.temp?.current && (
 					<button className="temp" onClick={() => onClickHandler()}>
-						{weather?.weatherInfo?.temp?.current} &deg;{weather.unit}
+						{weather.weatherInfo.temp.current} &deg;{weather.unit}
 					</button>
 				)}
 			</div>
@@ -35,7 +35,7 @@ const InfoPanel = () => {
 
 					{weather?.weatherInfo?.temp?.minTemp && (
 						<button className="temp" onClick={() => onClickHandler()}>
-							{weather?.weatherInfo?.temp?.minTemp} &deg;{weather.unit}
+							{weather.weatherInfo.temp.minTemp} &deg;{weather.unit}
 						</button>
 					)}
 				</div>
@@ -47,7 +47,7 @@ const InfoPanel = () => {
 
 					{weather?.weatherInfo?.temp?.maxTemp && (
 						<button className="temp" onClick={() => onClickHandler()}>
-							{weather?.weatherInfo?.temp?.maxTemp} &deg;{weather.unit}
+							{weather.weatherInfo.temp.maxTemp} &deg;{weather.unit}
 						</button>
 					)}
 				</div>
