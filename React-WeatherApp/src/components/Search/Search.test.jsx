@@ -1,7 +1,5 @@
 import React from "react";
 import "@testing-library/jest-dom";
-import { rest, HttpResponse } from "msw";
-import { setupServer } from "msw/node";
 import { act, fireEvent, waitFor } from "@testing-library/react";
 
 import Search from "./Search";
