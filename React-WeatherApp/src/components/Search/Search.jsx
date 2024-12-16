@@ -1,4 +1,4 @@
-import React, { startTransition, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 
@@ -8,8 +8,9 @@ import { setError, resetError } from "store/reducer/errorReducer";
 import { setWeather } from "store/reducer/waetherReducer";
 import { useLazyGetCurrentWeatherQuery } from "store/services/weatherAPI";
 
-import "./Search.scss";
 import { validateInput } from "utils/validation.utils";
+
+import "./Search.scss";
 
 const Search = () => {
 	const dispatch = useDispatch();
@@ -57,7 +58,7 @@ const Search = () => {
 			dispatch(setError("errors.emptyString"));
 		}
 	};
-
+	console.log([errorMessage, weather]);
 	const onClickMyLocation = () => {
 		getMyLocation();
 	};
@@ -72,17 +73,21 @@ const Search = () => {
 
 					<div className="inputWithBtn">
 						<input
+							data-testid={t("search_input.id")}
 							id={t("search_input.id")}
 							placeholder={t("search_input.placeholder")}
 							value={value}
 							onChange={(e) => setValue(e.target.value)}
 						/>
-
-						<button onClick={() => onClickHandler()}>{t("search_btn")}</button>
+						{console.log(errorMessage)}
+						<button data-testid="search-btn" onClick={() => onClickHandler()}>
+							{t("search_btn")}
+						</button>
 					</div>
 				</div>
 
 				<button
+					data-testid="myLocation-btn"
 					className="myLocationBtn"
 					aria-label="use my location"
 					onClick={() => {
@@ -93,7 +98,11 @@ const Search = () => {
 				</button>
 			</div>
 
-			{errorMessage && <span className="error">{t(errorMessage.error)}</span>}
+			{errorMessage?.error && (
+				<span data-testid="error-txt" className="error">
+					{t(errorMessage.error)}
+				</span>
+			)}
 		</>
 	);
 };

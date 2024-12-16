@@ -15,11 +15,16 @@ export const rootReducer = combineReducers({
 	[weartherApi.reducerPath]: weartherApi.reducer,
 });
 
-const store = configureStore({
-	reducer: rootReducer,
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat(weartherApi.middleware),
-});
+export function setupStore(preloadedState) {
+	return configureStore({
+		reducer: rootReducer,
+		preloadedState,
+		middleware: (getDefaultMiddleware) =>
+			getDefaultMiddleware().concat(weartherApi.middleware),
+	});
+}
+
+const store = setupStore();
 
 setupListeners(store.dispatch);
 

@@ -1,6 +1,8 @@
 import React from "react";
 import "@testing-library/jest-dom";
-import { act, fireEvent } from "@testing-library/react";
+import { rest, HttpResponse } from "msw";
+import { setupServer } from "msw/node";
+import { act, fireEvent, waitFor } from "@testing-library/react";
 
 import Search from "./Search";
 
@@ -42,5 +44,56 @@ describe("<Search />", () => {
 		});
 
 		expect(getByTestId("locationSearch")).toHaveValue("Toronto");
+	});
+
+	it("should render error message when search is clicked with an empty textbox", () => {
+		const { getByTestId, getByText } = render(<Search />, {
+			preloadedState: {
+				weather: {
+					unit: "C",
+					weatherInfo: {},
+					location: "",
+				},
+			},
+		});
+
+		expect(getByText(/Search/i)).toBeInTheDocument();
+
+		act(() => {
+			fireEvent.click(getByTestId("search-btn"));
+		});
+
+		expect(
+			getByText("Please enter a city, latLog, postal code or zip code.")
+		).toBeInTheDocument();
+	});
+
+	it("should render error message when search is clicked with invalid value in textbox", async () => {
+		const { getByTestId, getByText } = render(<Search />, {
+			preloadedState: {
+				weather: {
+					unit: "C",
+					weatherInfo: {},
+					location: "",
+				},
+			},
+		});
+
+		expect(getByText(/Search/i)).toBeInTheDocument();
+		fireEvent.change(getByTestId("locationSearch"), {
+			target: { value: "sdfgblknagdfbl;knkn" },
+		});
+
+		act(() => {
+			fireEvent.click(getByTestId("search-btn"));
+		});
+
+		await waitFor(() =>
+			expect(
+				getByText(
+					"Invalid city, latlong or postal/zipcode. use format like 45.0,-93.2 for latlong or '12345' or 'A1A 1A1' for postal/zip code."
+				)
+			).toBeInTheDocument()
+		);
 	});
 });
