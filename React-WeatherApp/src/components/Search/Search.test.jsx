@@ -21,6 +21,7 @@ describe("<Search />", () => {
 		expect(getByText(/Search/i)).toBeInTheDocument();
 	});
 
+	// TODO: Fix
 	it("should get current wearther for searched city", () => {
 		const { getByTestId, getByText } = render(<Search />, {
 			preloadedState: {
@@ -44,6 +45,8 @@ describe("<Search />", () => {
 		expect(getByTestId("locationSearch")).toHaveValue("Toronto");
 	});
 
+	//TODO: Add test using the find my location button
+
 	it("should render error message when search is clicked with an empty textbox", () => {
 		const { getByTestId, getByText } = render(<Search />, {
 			preloadedState: {
@@ -66,6 +69,7 @@ describe("<Search />", () => {
 		).toBeInTheDocument();
 	});
 
+	//TODO: Fix
 	it("should render error message when search is clicked with invalid value in textbox", async () => {
 		const { getByTestId, getByText } = render(<Search />, {
 			preloadedState: {

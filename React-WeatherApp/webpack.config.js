@@ -36,17 +36,10 @@ export default {
 	},
 	resolve: {
 		extensions: [".js", ".jsx"],
-		fallback: {
-			util: require.resolve("util"),
-		},
 	},
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: "./public/index.html",
-		}),
-		new webpack.ProvidePlugin({
-			TextEncoder: ["util", "TextEncoder"],
-			TextDecoder: ["util", "TextDecoder"],
 		}),
 	],
 	optimization: {
