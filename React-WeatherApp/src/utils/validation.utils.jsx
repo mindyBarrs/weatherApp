@@ -1,7 +1,3 @@
-import { setError } from "store/reducer/errorReducer";
-
-import store from "store";
-
 import {
 	cityRegex,
 	latLongRegex,
@@ -13,54 +9,54 @@ import {
  * Validates a latitude and longitude input string.
  *
  * @param {string} latLong - The latitude and longitude string to validate.
- * @returns {string|null} Returns "errors.emptyString" if the input is empty,
- *                        "errors.validString" if the input is invalid,
- *                        or null if the input is valid.
+ * @returns {boolean} Returns false if the input is empty,
+ *                        false if the input is invalid,
+ *                        or true if the input is valid.
  */
 export const validateLatLong = (latLong) => {
 	// Check if the input is an empty string after trimming whitespace.
 	// An empty input cannot represent a valid latitude and longitude.
-	if (!latLong.trim()) return "errors.emptyString";
+	if (!latLong.trim()) return false;
 
-	if (!latLongRegex.test(latLong)) return "errors.vaildString";
-	return null; // Valid
+	if (!latLongRegex.test(latLong)) return false;
+	return true; // Valid
 };
 
 /**
  * Validates a postal code or ZIP code input string.
  *
  * @param {string} postalCode - The postal or ZIP code string to validate.
- * @returns {string|null} Returns "errors.emptyString" if the input is empty,
- *                        "errors.validString" if the input is invalid,
- *                        or null if the input is valid.
+ * @returns {boolean} Returns false if the input is empty,
+ *                        false if the input is invalid,
+ *                        or true if the input is valid.
  */
 export const validatePostalOrZip = (postalCode) => {
 	// Check if the input is an empty string after trimming whitespace.
 	// An empty input cannot represent a valid postal or ZIP code.
-	if (!postalCode.trim()) return "errors.emptyString";
+	if (!postalCode.trim()) return false;
 
 	// Validate against both ZIP code and postal code formats.
 	if (!zipCodeRegex.test(postalCode) && !postalCodeRegex.test(postalCode)) {
-		return "errors.vaildString";
+		return false;
 	}
-	return null; // Valid
+	return true; // Valid
 };
 
 /**
  * Validates a city name input string.
  *
  * @param {string} city - The city name string to validate.
- * @returns {string|null} Returns "errors.emptyString" if the input is empty,
- *                        "errors.validString" if the input is invalid,
- *                        or null if the input is valid.
+ * @returns {boolean} Returns false if the input is empty,
+ *                        false if the input is invalid,
+ *                        or true if the input is valid.
  */
 export const validateCity = (city) => {
 	// Check if the input is an empty string after trimming whitespace.
 	// An empty input cannot represent a valid city name.
-	if (!city.trim()) return "errors.emptyString";
+	if (!city.trim()) return false;
 
-	if (!cityRegex.test(city)) return "errors.vaildString";
-	return null; // Valid
+	if (!cityRegex.test(city)) return false;
+	return true; // Valid
 };
 
 /**
@@ -71,17 +67,16 @@ export const validateCity = (city) => {
  * @returns {boolean} Returns true if the input is valid for any of the formats,
  *                    otherwise dispatches an error and returns false.
  */
+
 export const validateInput = (input) => {
 	const cityError = validateCity(input);
-	if (!cityError) return true;
+	if (cityError) return true;
 
 	const latLongError = validateLatLong(input);
-	if (!latLongError) return true;
+	if (latLongError) return true;
 
 	const postalError = validatePostalOrZip(input);
-	if (!postalError) return true;
+	if (postalError) return true;
 
-	// Dispatches the first encountered error.
-	store.dispatch(setError(cityError || latLongError || postalError));
 	return false;
 };

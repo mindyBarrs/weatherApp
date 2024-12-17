@@ -30,8 +30,10 @@ const Search = () => {
 	useEffect(() => {
 		if (data) {
 			dispatch(setWeather(data));
+		} else {
+			dispatch(setError(error?.error));
 		}
-	}, [data]);
+	}, [data, error]);
 
 	useEffect(() => {
 		if (location) {
@@ -51,10 +53,13 @@ const Search = () => {
 	}, [weather]);
 
 	const onClickHandler = () => {
+		dispatch(resetError());
+
 		if (value) {
 			if (validateInput(value)) {
 				getCurrentWeatherQuery(value);
-				dispatch(resetError());
+			} else {
+				dispatch(setError("errors.vaildString"));
 			}
 		} else {
 			dispatch(setError("errors.emptyString"));
@@ -81,7 +86,7 @@ const Search = () => {
 							value={value}
 							onChange={(e) => setValue(e.target.value)}
 						/>
-						{console.log(errorMessage)}
+
 						<button data-testid="search-btn" onClick={() => onClickHandler()}>
 							{t("search_btn")}
 						</button>

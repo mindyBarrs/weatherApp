@@ -1,5 +1,4 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { setupListeners } from "@reduxjs/toolkit/query";
 
 // REDUCER
 import waetherReducer from "./reducer/waetherReducer";
@@ -23,9 +22,3 @@ export function setupStore(preloadedState) {
 			getDefaultMiddleware().concat(weartherApi.middleware),
 	});
 }
-
-const store = setupStore();
-
-setupListeners(store.dispatch);
-
-export default store;
