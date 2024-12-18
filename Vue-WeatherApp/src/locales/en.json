@@ -1,0 +1,17 @@
+{
+  "app_header": "Currect Weather",
+  "max_temp": "Max. Tempature",
+  "min_temp": "Min. Tempature",
+  "current_temp": "Current Tempature",
+  "weather_condition": "Current weather condition",
+  "search_btn": "Search",
+  "search_input": {
+    "id": "locationSearch",
+    "placeholder": "Enter city, postal code or lat,long",
+    "label": "Seach a locations weather"
+  },
+  "errors": {
+    "vaildString": "Invalid city, latlong or postal/zipcode. use format like 45.0,-93.2 for latlong or '12345' or 'A1A 1A1' for postal/zip code.",
+    "emptyString": "Please enter a city, latLog, postal code or zip code."
+  }
+}

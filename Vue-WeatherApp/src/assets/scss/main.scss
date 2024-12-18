@@ -1,0 +1,30 @@
+@import './global.scss';
+
+h1 {
+  font-family: $main-font-family;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 15px;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  font-weight: normal;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+@media (min-width: 1024px) {
+  #app {
+    width: 50%;
+    padding: 0 2rem;
+  }
+}
