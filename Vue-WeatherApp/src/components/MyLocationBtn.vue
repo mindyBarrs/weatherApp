@@ -1,7 +1,11 @@
+<script setup>
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+</script>
+
 <template>
-  <div>
-    <button>My location search</button>
-  </div>
+  <button class="myLocationBtn" aria-label="use my location">
+    <FontAwesomeIcon :icon="['fas', 'crosshairs']" />
+  </button>
 </template>
 
 <script>

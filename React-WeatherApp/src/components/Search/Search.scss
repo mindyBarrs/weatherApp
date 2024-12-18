@@ -59,8 +59,8 @@ label {
 .myLocationBtn {
 	border-radius: 80px;
 	border: unset;
-	background-color: #031d44;
-	color: #dab785;
+	background-color: colors.$dark-blue;
+	color: colors.$lite-orange;
 	height: 50px;
 	width: 50px;
 	display: flex;

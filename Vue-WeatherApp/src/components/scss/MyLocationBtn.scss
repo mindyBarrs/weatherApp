@@ -1,0 +1,14 @@
+.myLocationBtn {
+  border-radius: 80px;
+  border: unset;
+  background-color: $dark-grey;
+  color: $green;
+  height: 50px;
+  width: 50px;
+  display: flex;
+  font-size: 25px;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
+  margin-top: 35px;
+}
