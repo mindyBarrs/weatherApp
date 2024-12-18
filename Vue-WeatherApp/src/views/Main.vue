@@ -7,7 +7,7 @@ import MyLocationBtn from '@/components/MyLocationBtn.vue'
 <template>
   <div class="search"><LocationSearch /> <MyLocationBtn /></div>
 
-  <div><InfoPanel /></div>
+  <InfoPanel />
 </template>
 
 <script>

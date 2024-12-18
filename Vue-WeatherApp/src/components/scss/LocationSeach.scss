@@ -1,3 +1,7 @@
+.location-search {
+  width: 100%;
+}
+
 .inputWithBtn {
   position: relative;
   width: 100%;
@@ -16,8 +20,8 @@
 
   button {
     position: absolute;
-    right: 3px;
-    top: 2px;
+    right: 0;
+    top: 5px;
     width: 25%;
     height: 45px;
     border-radius: 80px;
