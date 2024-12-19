@@ -9,7 +9,7 @@ export const convertFahrenheit = (temps) => {
 
   // Convert each temperature value from Celsius to Fahrenheit.
   Object.keys(fahTemps).forEach((key) => {
-    fahTemps[key] = ((fahTemps[key] * 9) / 5 + 32).toFixed(2)
+    fahTemps[key] = ((fahTemps[key] * 9) / 5 + 32).toFixed(1)
   })
 
   return fahTemps
@@ -26,7 +26,7 @@ export const convertCelcius = (temps) => {
 
   // Convert each temperature value from Fahrenheit to Celsius.
   Object.keys(celTemps).forEach((key) => {
-    celTemps[key] = (((celTemps[key] - 32) * 5) / 9).toFixed(2)
+    celTemps[key] = (((celTemps[key] - 32) * 5) / 9).toFixed(1)
   })
 
   return celTemps

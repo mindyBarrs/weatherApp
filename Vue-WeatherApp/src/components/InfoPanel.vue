@@ -2,7 +2,11 @@
   <div class="card">
     <div class="currentTemp">
       <span>{{ $t('current_temp') }}</span>
-      <button v-if="weatherInfo?.temp?.current" class="temp" @click="onClickHandler">
+      <button
+        v-if="weatherInfo?.temp?.current"
+        class="temp"
+        @click="onClickHandler(weatherInfo.temp)"
+      >
         {{ weatherInfo.temp.current }} &deg;{{ unit }}
       </button>
     </div>
@@ -10,14 +14,22 @@
     <div class="minMaxTemp">
       <div>
         <span>{{ $t('min_temp') }}</span>
-        <button v-if="weatherInfo?.temp?.minTemp" class="temp" @click="onClickHandler">
+        <button
+          v-if="weatherInfo?.temp?.minTemp"
+          class="temp"
+          @click="onClickHandler(weatherInfo.temp)"
+        >
           {{ weatherInfo.temp.minTemp }} &deg;{{ unit }}
         </button>
       </div>
 
       <div>
         <span>{{ $t('max_temp') }}</span>
-        <button v-if="weatherInfo?.temp?.maxTemp" class="temp" @click="onClickHandler">
+        <button
+          v-if="weatherInfo?.temp?.maxTemp"
+          class="temp"
+          @click="onClickHandler(weatherInfo.temp)"
+        >
           {{ weatherInfo.temp.maxTemp }} &deg;{{ unit }}
         </button>
       </div>
@@ -39,9 +51,13 @@ export default {
   name: 'InfoPanel',
   setup() {
     const weatherStore = useWeatherStore()
-    const { weatherInfo } = storeToRefs(weatherStore)
+    const { weatherInfo, unit } = storeToRefs(weatherStore)
 
-    return { weatherInfo }
+    const onClickHandler = (temps) => {
+      weatherStore.convertTemp(temps)
+    }
+
+    return { weatherInfo, unit, onClickHandler }
   },
 }
 </script>

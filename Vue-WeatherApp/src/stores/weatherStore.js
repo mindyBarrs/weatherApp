@@ -1,5 +1,7 @@
 import { defineStore } from 'pinia'
 import axios from 'axios'
+
+import { convertCelcius, convertFahrenheit } from '../utils/tempature.utils'
 import { API_HOST, WEATHER_API } from '../utils/constants/url.constants'
 
 const transformResponse = (res) => {
@@ -24,6 +26,7 @@ export const useWeatherStore = defineStore('weatherStore', {
   state: () => ({
     unit: 'C',
     weatherInfo: null,
+    location: '',
     loading: false,
     error: null,
   }),
@@ -34,18 +37,18 @@ export const useWeatherStore = defineStore('weatherStore', {
       try {
         const response = await axios.post(`${API_HOST}${WEATHER_API}`, { locationData })
         this.weatherInfo = transformResponse(response.data)
+        this.location = this.weatherInfo.location
       } catch (error) {
         this.error = error
       } finally {
         this.loading = false
       }
     },
-    // setWeather(data) {
-    //   this.weatherInfo = data
-    //   this.location = data.location
-    // },
     setUnit(data) {
       this.unit = data
+    },
+    setLocation(data) {
+      this.location = data
     },
     convertTemp(data) {
       if (this.unit === 'C') {

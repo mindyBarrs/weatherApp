@@ -7,10 +7,10 @@
         :id="t('search_input.id')"
         :placeholder="t('search_input.placeholder')"
         type="text"
-        v-model="location"
+        v-model="weatherLocation"
       />
 
-      <button @click="weatherStore.getCurrentWeather(location)">{{ t('search_btn') }}</button>
+      <button @click="getCurrentWeather(weatherLocation)">{{ t('search_btn') }}</button>
     </div>
   </div>
 </template>
@@ -18,6 +18,7 @@
 <script>
 import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
+import { storeToRefs } from 'pinia'
 
 import { useWeatherStore } from '@/stores/weatherStore'
 
@@ -26,10 +27,14 @@ export default {
   setup() {
     const { t } = useI18n()
 
-    const location = ref('')
     const weatherStore = useWeatherStore()
+    const { getCurrentWeather } = weatherStore
 
-    return { t, weatherStore, location }
+    const { location } = storeToRefs(weatherStore)
+
+    const weatherLocation = ref('' || location)
+
+    return { t, getCurrentWeather, weatherLocation }
   },
 }
 </script>
