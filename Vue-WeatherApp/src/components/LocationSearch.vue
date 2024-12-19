@@ -12,6 +12,8 @@
 
       <button @click="getCurrentWeather(weatherLocation)">{{ t('search_btn') }}</button>
     </div>
+
+    <span class="error" v-if="error">{{ error }}</span>
   </div>
 </template>
 
@@ -30,11 +32,11 @@ export default {
     const weatherStore = useWeatherStore()
     const { getCurrentWeather } = weatherStore
 
-    const { location } = storeToRefs(weatherStore)
+    const { location, error } = storeToRefs(weatherStore)
 
     const weatherLocation = ref('' || location)
 
-    return { t, getCurrentWeather, weatherLocation }
+    return { t, getCurrentWeather, weatherLocation, error }
   },
 }
 </script>

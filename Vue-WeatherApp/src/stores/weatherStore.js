@@ -39,7 +39,7 @@ export const useWeatherStore = defineStore('weatherStore', {
         this.weatherInfo = transformResponse(response.data)
         this.location = this.weatherInfo.location
       } catch (error) {
-        this.error = error
+        this.error = error.message
       } finally {
         this.loading = false
       }

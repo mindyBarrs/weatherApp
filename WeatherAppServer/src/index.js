@@ -20,7 +20,7 @@ app.get("/status", (req, res) => {
 	res.send(status);
 });
 
-app.post("/weatherInfo", async (req, res) => {
+app.post("/weatherInfo", async (req, res, next) => {
 	const body = req.body;
 
 	await axios
@@ -28,16 +28,11 @@ app.post("/weatherInfo", async (req, res) => {
 			`http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${body?.locationData}&days=1&aqi=no&alerts=no`
 		)
 		.then((response) => {
+			console.log("hello");
 			res.send(response.data);
 		})
-		.catch((err) => {
-			const status = {
-				Status: err.status,
-				ErrorCode: err.code,
-				message: "Error retrieving weather information",
-			};
-
-			res.send(status);
+		.catch(() => {
+			next("Error retrieving weather information");
 		});
 });
 
