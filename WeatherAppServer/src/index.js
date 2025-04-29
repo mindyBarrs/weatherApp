@@ -28,7 +28,6 @@ app.post("/weatherInfo", async (req, res, next) => {
 			`http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${body?.locationData}&days=1&aqi=no&alerts=no`
 		)
 		.then((response) => {
-			console.log("hello");
 			res.send(response.data);
 		})
 		.catch(() => {
