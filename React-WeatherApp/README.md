@@ -27,7 +27,7 @@ at the beginning of every file vs. Create-React-App you don't need it as long as
 - [i18next](https://www.i18next.com/overview/getting-started)
 - [Scss](https://sass-lang.com/documentation/syntax/)
 
-### Importing
+## Importing
 
 The application is also setup to us absolute imports vs. Releative importing. I think it looks nicer with absolute imports then relative.
 
@@ -39,7 +39,7 @@ import Search from 'components/Search'
 import Search from '../components/Search'
 ```
 
-### Recommend Extension
+## Recommend Extension
 
 - Jest Runner
 - Path Intellisense
